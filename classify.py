@@ -36,6 +36,12 @@ input_example = data[0:10]
 with mlflow.start_run() : 
     # log parameters 
     n_estimators = 505
+    booster = 'gbtree'
+    max_depth = [100,500,5]
+    learning_rate = [0.01, 0.2,10]
+    gamma = [0,1,5]
+    subsample = [0.6,1.0, 5]
+    colsample_bytree = [0.6,1,0,5]
 
-    
+    # autolog
     mlflow.autolog()
