@@ -45,3 +45,11 @@ with mlflow.start_run() :
 
     # autolog
     mlflow.autolog()
+
+    # training 
+    model = XGBClassifier(n_estimators=n_estimators)
+    model.fit(X_train_scaled, y_train)
+
+    # optimalization 
+    
+
