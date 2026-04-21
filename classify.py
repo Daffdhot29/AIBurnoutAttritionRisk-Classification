@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from xgboost import XGBClassifier
 
+from mlflow.models import validate_serving_input
 
 mlflow.set_tracking_uri('http://127.0.0.1:5000/')
 mlflow.set_experiment('Classification-for-Attrition-worker-by-AI')
@@ -47,9 +48,11 @@ with mlflow.start_run() :
     mlflow.autolog()
 
     # training 
-    model = XGBClassifier(n_estimators=n_estimators)
+    model = XGBClassifier(n_estimators=n_estimators, max_depth=max_depth, learning_rate=learning_rate)
     model.fit(X_train_scaled, y_train)
 
     # optimalization 
+
+
     
 
