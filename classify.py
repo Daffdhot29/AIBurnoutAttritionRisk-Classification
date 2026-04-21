@@ -49,7 +49,14 @@ with mlflow.start_run() :
 
     # training 
     model = XGBClassifier(n_estimators=n_estimators, max_depth=max_depth, learning_rate=learning_rate)
+    mlflow.sklearn.log_model(
+        sk_model=model,
+        artifact_path="model",
+        input_example= input_example
+    )
+
     model.fit(X_train_scaled, y_train)
+    
 
     # optimalization 
 
