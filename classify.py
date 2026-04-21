@@ -48,7 +48,9 @@ with mlflow.start_run() :
     mlflow.autolog()
 
     # training 
-    model = XGBClassifier(n_estimators=n_estimators, max_depth=max_depth, learning_rate=learning_rate)
+    model = XGBClassifier(n_estimators=n_estimators, booster=booster ,max_depth=max_depth, 
+                          learning_rate=learning_rate, gamma=gamma,subsample=subsample,
+                          colsample_bytree=colsample_bytree)
     mlflow.sklearn.log_model(
         sk_model=model,
         artifact_path="model",
