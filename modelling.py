@@ -39,19 +39,12 @@ with mlflow.start_run() :
     # log parameters 
     n_estimators = 505
     booster = 'gbtree'
-    max_depth = [100,500,5]
-    learning_rate = [0.01, 0.2,10]
-    gamma = [0,1,5]
-    subsample = [0.6,1.0, 5]
-    colsample_bytree = [0.6,1,0,5]
 
     # autolog
     mlflow.autolog()
 
     # training 
-    model = XGBClassifier(n_estimators=n_estimators, booster=booster ,max_depth=max_depth, 
-                          learning_rate=learning_rate, gamma=gamma,subsample=subsample,
-                          colsample_bytree=colsample_bytree)
+    model = XGBClassifier(n_estimators=n_estimators, booster=booster)
     log_model(
         sk_model=model,
         artifact_path="model",
@@ -59,9 +52,9 @@ with mlflow.start_run() :
     )
 
     model.fit(X_train_scaled, y_train)
-    
-
     # optimalization 
+
+    
 
 
     
