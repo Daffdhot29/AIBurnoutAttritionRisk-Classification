@@ -11,7 +11,7 @@ from mlflow.models import validate_serving_input
 mlflow.set_tracking_uri('http://127.0.0.1:5000/')
 mlflow.set_experiment('Classification-for-Attrition-worker-by-AI')
 
-data = pd.read_csv('../data/ai_worker_burnout_attrition_2026.csv')
+data = pd.read_csv('data/ai_worker_burnout_attrition_2026.csv')
 
 # encoder
 
@@ -52,7 +52,11 @@ with mlflow.start_run() :
     )
 
     model.fit(X_train_scaled, y_train)
-    # optimalization 
+    
+    # log metrics 
+
+    accuracy = model.score(X_test_scaled, y_test)
+
 
     
 
